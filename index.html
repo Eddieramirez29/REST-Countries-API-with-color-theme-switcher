@@ -12,28 +12,33 @@
     </header>
 
     <div class="container">
-        <img id="magnifyingGlass" src="" alt="">
-        <input type="text" placeholder="Search for a country...">
+        <div class="containerSearch">
+            <img id="magnifyingGlass" src="./media/magnifying-glass.png" alt="">
+            <input type="text" placeholder="Search for a country...">
+        </div>
     </div>
 
-    <div class="container">
+    <div class="containerMenu">
         <label for="cars" id="optionsLable">Filter by region</label>
         <select name="cars" id="countries">
-          <option value="volvo">Africa</option>
-          <option value="saab">America</option>
-          <option value="opel">Asia</option>
-          <option value="audi">Europe</option>
-          <option value="audi">Oceania</option>
+          <option value="Africa">Africa</option>
+          <option value="America">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
     </div>
 
-    <main class="container">
-        <img src="./media/Flag_of_Germany.svg.png" alt="" id="flag">
-        <p id="nameCountry">Alemania</p>
-        <p id="population">82,000,000</p>
-        <p id="region">Europa</p>
-        <p id="capital">Berlín</p>
-
+    <main class="containerCard">
+        <div class="card">
+            <img src="./media/Flag_of_Germany.svg.png" alt="" id="flag">
+        <div id="text">
+            <p id="nameCountry"></p>
+            <p id="population">Population:</p>
+            <p id="region">Region:</p>
+            <p id="capital">Capital:</p>
+        </div>
+        </div>
     </main>
 
     <script src="./index.js"></script>

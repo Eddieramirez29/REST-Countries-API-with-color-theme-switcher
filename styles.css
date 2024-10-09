@@ -1,1 +1,113 @@
-/*# sourceMappingURL=styles.css.map */
+body {
+  background-color: bisque;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 100px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 720px;
+}
+
+.container #question {
+  font-weight: bolder;
+  font-size: 2em;
+  margin-left: 20px;
+}
+
+.container #mode {
+  font-size: 2em;
+  background-image: url("./media/moon.png");
+  background-size: 1em;
+  background-repeat: no-repeat;
+  width: 300px;
+  border: none;
+  background-color: bisque;
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+.container #mode:hover {
+  background-color: #212E37;
+  color: bisque;
+}
+
+.containerSearch {
+  margin-top: 20px;
+  height: 140px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  width: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container #magnifyingGlass {
+  height: 2em;
+  margin-left: 20px;
+}
+
+.container input {
+  height: 3em;
+  width: 550px;
+  background-color: bisque;
+  border: none;
+}
+
+.containerMenu {
+  width: 720px;
+  height: 3em;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.containerMenu #optionsLable {
+  font-size: 2em;
+}
+
+.containerMenu option, select {
+  font-weight: bolder;
+}
+
+.containerMenu select {
+  height: 2em;
+  border: none;
+  margin-left: 20px;
+  background-color: bisque;
+}
+
+.containerCard {
+  width: 720px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 500px;
+  display: flex;
+  margin-left: 35px;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.containerCard #flag {
+  margin-top: 20px;
+  margin-left: 130.0108342362px;
+  height: 150px;
+  width: 240px;
+}
+
+.containerCard #text {
+  margin-top: 20px;
+  font-weight: bolder;
+}/*# sourceMappingURL=styles.css.map */

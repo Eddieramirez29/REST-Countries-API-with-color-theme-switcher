@@ -1,0 +1,137 @@
+$shadow:2px 2px 10px rgba(0, 0, 0, 0.5);
+$title-size:2em;
+$background-colors:bisque;
+$standard-margin:20px;
+$mobile-width:720px;
+$font-weights:bolder;
+
+body
+{
+    background-color: $background-colors;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header
+{
+    height: 100px;
+    box-shadow: $shadow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $mobile-width;
+}
+
+.container #question
+{
+    font-weight: $font-weights;
+    font-size: $title-size;
+    margin-left: $standard-margin;
+}
+
+.container #mode
+{
+    font-size: $title-size;
+    background-image: url("./media/moon.png");
+    background-size: 1em;
+    background-repeat: no-repeat;
+    width: 300px;
+    border: none;
+    background-color: $background-colors;
+    border-radius: 15px;
+    margin-right: $standard-margin;
+}
+
+.container #mode:hover
+{
+    background-color: #212E37;
+    color: $background-colors;
+}
+
+.containerSearch
+{
+    margin-top: $standard-margin;
+    height: 140px;
+    box-shadow: $shadow;
+    width: $mobile-width;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container #magnifyingGlass
+{
+    height: 2em;
+    margin-left: $standard-margin;
+}
+
+.container input
+{
+    height: 3em;
+    width: 550px;
+    background-color: $background-colors;
+    border: none;
+}
+
+.containerMenu
+{
+    width: $mobile-width;
+    height: 3em;
+    margin-top: $standard-margin;
+    margin-left: $standard-margin;
+}
+
+.containerMenu #optionsLable
+{
+    font-size: $title-size;
+}
+
+.containerMenu option, select
+{
+    font-weight: $font-weights;
+}
+
+.containerMenu select
+{
+    height: $title-size;
+    border: none;
+    margin-left: $standard-margin;
+    background-color: $background-colors;
+}
+
+.containerCard
+{
+    width: $mobile-width;
+    display: flex;
+    justify-content: center;
+}
+
+.card
+{
+    width: 500px;
+    display: flex;
+    margin-left: 35px;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: $shadow;
+}
+
+.containerCard #flag
+{
+    margin-top: $standard-margin;
+    margin-left: calc($mobile-width/5.538);
+    height: 150px;
+    width: calc($mobile-width/3);
+}
+
+.containerCard  #text
+{
+    margin-top: $standard-margin;
+    font-weight: $font-weights;
+}
