@@ -2,6 +2,32 @@ const button = document.getElementById("mode");
 const input = document.getElementById('input');
 const containerCard = document.querySelector(".containerCard");
 
+//Get elements to change color properties
+const body = document.body;
+
+
+let selectColor = 0;
+let backgroundColorVariable = "black";
+
+button.addEventListener("click", function()
+{
+    switch(selectColor)
+    {
+        case 0:
+            body.style.backgroundColor = backgroundColorVariable;
+            backgroundColorVariable = "white";
+            selectColor = 1;
+        break;
+        case 1:
+            body.style.backgroundColor = backgroundColorVariable;
+            backgroundColorVariable = "black";
+            selectColor = 0;
+        break;
+    }
+    
+});
+
+
 
 
 //Create new card that contains country information and flag
@@ -27,7 +53,9 @@ input.addEventListener("keydown", function(event)
         p4.id = "capital";
 
         //Styles
-        div.style.marginTop = "50px";
+        containerCard.style.marginBottom = "25px";
+        div.style.marginTop = "25px";
+        div.style.marginBottom = "25px";
         div.style.borderRadius = "10px";
 
         //add content
