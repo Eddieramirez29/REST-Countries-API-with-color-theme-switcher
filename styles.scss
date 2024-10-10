@@ -109,8 +109,7 @@ header
     display: flex;
     flex-direction: column;
     width: $mobile-width;
-    display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 .card

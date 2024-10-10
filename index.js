@@ -23,6 +23,10 @@ button.addEventListener("click", function()
     p3.id = "region";
     p4.id = "capital";
 
+    //Estilos
+    div.style.marginTop = "50px";
+    div.style.borderRadius = "10px";
+
     //add content
     img.src = "./media/Flag_of_Germany.svg.png";
     p2.textContent = 'Population:';

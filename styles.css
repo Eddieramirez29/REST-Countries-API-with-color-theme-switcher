@@ -88,8 +88,7 @@ header {
   display: flex;
   flex-direction: column;
   width: 720px;
-  display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 .card {
