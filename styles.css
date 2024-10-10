@@ -1,5 +1,5 @@
 body {
-  background-color: bisque;
+  background-color: white;
 }
 
 * {
@@ -30,14 +30,14 @@ header {
   background-repeat: no-repeat;
   width: 300px;
   border: none;
-  background-color: bisque;
+  background-color: white;
   border-radius: 15px;
   margin-right: 20px;
 }
 
 .container #mode:hover {
   background-color: #212E37;
-  color: bisque;
+  color: white;
 }
 
 .containerSearch {
@@ -58,7 +58,7 @@ header {
 .container input {
   height: 3em;
   width: 550px;
-  background-color: bisque;
+  background-color: white;
   border: none;
 }
 
@@ -81,10 +81,12 @@ header {
   height: 2em;
   border: none;
   margin-left: 20px;
-  background-color: bisque;
+  background-color: white;
 }
 
 .containerCard {
+  display: flex;
+  flex-direction: column;
   width: 720px;
   display: flex;
   justify-content: center;

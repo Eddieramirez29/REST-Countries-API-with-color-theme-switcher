@@ -1,6 +1,6 @@
 $shadow:2px 2px 10px rgba(0, 0, 0, 0.5);
 $title-size:2em;
-$background-colors:bisque;
+$background-colors:white;
 $standard-margin:20px;
 $mobile-width:720px;
 $font-weights:bolder;
@@ -106,6 +106,8 @@ header
 
 .containerCard
 {
+    display: flex;
+    flex-direction: column;
     width: $mobile-width;
     display: flex;
     justify-content: center;
