@@ -1,26 +1,75 @@
 const button = document.getElementById("mode");
-const input = document.getElementById('input');
 const containerCard = document.querySelector(".containerCard");
 
-//Get elements to change color properties
+const div = document.createElement("div");
+div.classList.add('card');
+
+
+const input = document.getElementById('input');
+const countries = document.getElementById('countries');
+const containerSearch = document.querySelector('.containerSearch');
+const containerMenu = document.querySelector('.containerMenu');
+
+//Get body
 const body = document.body;
-
-
+const header = document.querySelector('header');
 let selectColor = 0;
-let backgroundColorVariable = "black";
+let backgroundColorVariableDark = "hsl(209, 23%, 22%)";
+let backgroundColorVariableDarker = "hsl(207, 26%, 17%)";
+
+let colorLight = "white";
+let colorDark = "black";
 
 button.addEventListener("click", function()
 {
     switch(selectColor)
     {
         case 0:
-            body.style.backgroundColor = backgroundColorVariable;
-            backgroundColorVariable = "white";
+            //Change background colors
+            body.style.backgroundColor = backgroundColorVariableDarker;
+            button.style.backgroundColor = backgroundColorVariableDarker;
+            input.style.backgroundColor = backgroundColorVariableDark;
+            containerSearch.style.backgroundColor = backgroundColorVariableDark;
+            header.style.backgroundColor = backgroundColorVariableDark;
+            containerMenu.style.backgroundColor = backgroundColorVariableDark;
+            div.style.backgroundColor = backgroundColorVariableDark;
+            countries.style.backgroundColor = backgroundColorVariableDark;
+            //Change letter colors
+            body.style.color = colorLight;
+            button.style.color = colorLight;
+            input.style.color = colorLight;
+            containerSearch.style.color = colorLight;
+            header.style.color = colorLight;
+            containerMenu.style.color = colorLight;
+            div.style.color = colorLight;
+            countries.style.color = colorLight;
+
+
+            backgroundColorVariableDarker = "white";
+            backgroundColorVariableDark = "white";
             selectColor = 1;
         break;
         case 1:
-            body.style.backgroundColor = backgroundColorVariable;
-            backgroundColorVariable = "black";
+            body.style.backgroundColor = backgroundColorVariableDarker;
+            button.style.backgroundColor = backgroundColorVariableDarker;
+            input.style.backgroundColor = backgroundColorVariableDark;
+            containerSearch.style.backgroundColor = backgroundColorVariableDark;
+            header.style.backgroundColor = backgroundColorVariableDark;
+            containerMenu.style.backgroundColor = backgroundColorVariableDark;
+            div.style.backgroundColor = backgroundColorVariableDark;
+            countries.style.backgroundColor = backgroundColorVariableDark;
+
+            body.style.color = colorDark;
+            button.style.color = colorDark;
+            input.style.color = colorDark;
+            containerSearch.style.color = colorDark;
+            header.style.color = colorDark;
+            containerMenu.style.color = colorDark;
+            div.style.color = colorDark;
+            countries.style.color = colorDark;
+
+            backgroundColorVariableDarker = "hsl(207, 26%, 17%";
+            backgroundColorVariableDark = "hsl(209, 23%, 22%)";
             selectColor = 0;
         break;
     }
@@ -35,7 +84,7 @@ input.addEventListener("keydown", function(event)
 {
     if(event.key === "Enter")
     {
-        const div = document.createElement("div");
+        
         const img = document.createElement('img');
         const div2 = document.createElement('div');
         const p1 = document.createElement('p');
@@ -44,7 +93,7 @@ input.addEventListener("keydown", function(event)
         const p4 = document.createElement('p');
 
         // Asigna un id/class al nuevo elemento
-        div.classList.add('card');
+        
         img.id = "flag";
         div2.id = 'text';
         p1.id = "nameCountry";
@@ -53,7 +102,6 @@ input.addEventListener("keydown", function(event)
         p4.id = "capital";
 
         //Styles
-        containerCard.style.marginBottom = "25px";
         div.style.marginTop = "25px";
         div.style.marginBottom = "25px";
         div.style.borderRadius = "10px";

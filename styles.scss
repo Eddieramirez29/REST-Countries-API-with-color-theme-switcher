@@ -8,14 +8,12 @@ $font-weights:bolder;
 body
 {
     background-color: $background-colors;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 header
 {
@@ -47,11 +45,6 @@ header
     margin-right: $standard-margin;
 }
 
-.container #mode:hover
-{
-    background-color: #212E37;
-    color: $background-colors;
-}
 
 .containerSearch
 {
@@ -76,14 +69,16 @@ header
     width: 550px;
     background-color: $background-colors;
     border: none;
+    border-radius: 10px;
 }
 
 .containerMenu
 {
-    width: $mobile-width;
+    width: calc($mobile-width/1.8);
     height: 3em;
     margin-top: $standard-margin;
     margin-left: $standard-margin;
+    border-radius: 10px;
 }
 
 .containerMenu #optionsLable
