@@ -6,8 +6,6 @@ $desktop-width:100vw;
 $font-weights:bolder;
 
 
-
-
 body
 {
     background-color: $background-colors;
@@ -39,14 +37,14 @@ header
     width: $mobile-width;
 }
 
-.container #question
+#question
 {
     font-weight: $font-weights;
     font-size: $title-size;
     margin-left: $standard-margin;
 }
 
-.container #mode
+#mode
 {
     font-size: $title-size;
     background-image: url("./media/moon.png");
@@ -70,13 +68,13 @@ header
     justify-content: space-between;
 }
 
-.container #magnifyingGlass
+#magnifyingGlass
 {
     height: 2em;
     margin-left: $standard-margin;
 }
 
-.container input
+input
 {
     height: 3em;
     width: 550px;
@@ -94,17 +92,17 @@ header
     border-radius: 10px;
 }
 
-.containerMenu #optionsLable
+#optionsLable
 {
     font-size: $title-size;
 }
 
-.containerMenu option, select
+option, select
 {
     font-weight: $font-weights;
 }
 
-.containerMenu select
+select
 {
     height: $title-size;
     border: none;
@@ -130,7 +128,7 @@ header
     flex-direction: column;
 }
 
-.containerCard #flag
+#flag
 {
     margin-top: $standard-margin;
     margin-left: calc($mobile-width/5.538);
@@ -138,7 +136,7 @@ header
     width: calc($mobile-width/3);
 }
 
-.containerCard  #text
+#text
 {
     margin-top: $standard-margin;
     font-weight: $font-weights;
@@ -151,4 +149,5 @@ header
     {
         width: $desktop-width;
     }
+
 }

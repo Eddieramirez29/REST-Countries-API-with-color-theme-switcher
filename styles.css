@@ -19,13 +19,13 @@ header {
   width: 768px;
 }
 
-.container #question {
+#question {
   font-weight: bolder;
   font-size: 2em;
   margin-left: 20px;
 }
 
-.container #mode {
+#mode {
   font-size: 2em;
   background-image: url("./media/moon.png");
   background-size: 1em;
@@ -46,12 +46,12 @@ header {
   justify-content: space-between;
 }
 
-.container #magnifyingGlass {
+#magnifyingGlass {
   height: 2em;
   margin-left: 20px;
 }
 
-.container input {
+input {
   height: 3em;
   width: 550px;
   background-color: white;
@@ -67,15 +67,15 @@ header {
   border-radius: 10px;
 }
 
-.containerMenu #optionsLable {
+#optionsLable {
   font-size: 2em;
 }
 
-.containerMenu option, select {
+option, select {
   font-weight: bolder;
 }
 
-.containerMenu select {
+select {
   height: 2em;
   border: none;
   margin-left: 20px;
@@ -98,14 +98,14 @@ header {
   flex-direction: column;
 }
 
-.containerCard #flag {
+#flag {
   margin-top: 20px;
   margin-left: 138.6782231853px;
   height: 150px;
   width: 256px;
 }
 
-.containerCard #text {
+#text {
   margin-top: 20px;
   font-weight: bolder;
 }
