@@ -2,7 +2,7 @@ $title-size:2em;
 $background-colors:white;
 $standard-margin:20px;
 $mobile-width:768px;
-$desktop-width:100vw;
+$desktop-width:1340px;
 $font-weights:bolder;
 
 
@@ -26,16 +26,6 @@ header,
     @extend .box-shadow
 }
 
-
-
-header
-{
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: $mobile-width;
-}
 
 #question
 {
@@ -143,6 +133,15 @@ select
 }
 
 
+header
+{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $mobile-width;
+}
+
 @media (min-width: 768px)
 {
     header
@@ -151,3 +150,4 @@ select
     }
 
 }
+
