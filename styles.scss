@@ -1,9 +1,12 @@
-$shadow:2px 2px 10px rgba(0, 0, 0, 0.5);
 $title-size:2em;
 $background-colors:white;
 $standard-margin:20px;
-$mobile-width:720px;
+$mobile-width:768px;
+$desktop-width:100vw;
 $font-weights:bolder;
+
+
+
 
 body
 {
@@ -13,12 +16,23 @@ body
     flex-direction: column;
 }
 
+.box-shadow
+{
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+header,
+.containerSearch,
+.card
+{
+    @extend .box-shadow
+}
+
 
 
 header
 {
     height: 100px;
-    box-shadow: $shadow;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,7 +64,6 @@ header
 {
     margin-top: $standard-margin;
     height: 140px;
-    box-shadow: $shadow;
     width: $mobile-width;
     display: flex;
     align-items: center;
@@ -115,7 +128,6 @@ header
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    box-shadow: $shadow;
 }
 
 .containerCard #flag
@@ -130,4 +142,13 @@ header
 {
     margin-top: $standard-margin;
     font-weight: $font-weights;
+}
+
+
+@media (min-width: 768px)
+{
+    header
+    {
+        width: $desktop-width;
+    }
 }
