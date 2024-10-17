@@ -114,4 +114,23 @@ header {
   header {
     width: 1340px;
   }
+  .containerSearch {
+    width: 1340px;
+    justify-content: flex-start;
+    box-shadow: none;
+  }
+  input {
+    width: 370px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .containerMenu {
+    position: absolute;
+    top: 150px;
+    right: 150px;
+  }
+  .containerCard {
+    display: flex;
+    flex-direction: row;
+    width: 768px;
+  }
 }/*# sourceMappingURL=styles.css.map */

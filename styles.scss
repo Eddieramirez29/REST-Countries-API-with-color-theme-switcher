@@ -149,5 +149,33 @@ header
         width: $desktop-width;
     }
 
+    .containerSearch
+    {
+        width: $desktop-width;
+        justify-content: flex-start;
+        box-shadow:none;
+    }
+
+    input
+    {
+        width: 370px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .containerMenu
+    {
+        position: absolute;
+        top:150px;
+        right: 150px;
+    }
+
+    .containerCard
+    {
+        display: flex;
+        flex-direction: row;
+        width: $mobile-width;
+    }
+
+
 }
 
