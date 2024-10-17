@@ -93,6 +93,8 @@ input.addEventListener("keydown", function(event)
         const p4 = document.createElement('p');
 
         // Asigna un id/class al nuevo elemento
+        const div = document.createElement("div");
+        div.classList.add('card');
         
         img.id = "flag";
         div2.id = 'text';
@@ -102,11 +104,11 @@ input.addEventListener("keydown", function(event)
         p4.id = "capital";
 
         //Styles
-        div.style.marginTop = "25px";
+        div.style.marginTop = "25px";  
         div.style.marginBottom = "25px";
         div.style.borderRadius = "10px";
 
-        //add content
+        //Add content
         img.src = "./media/Flag_of_Germany.svg.png";
         p2.textContent = 'Population:';
         p3.textContent = 'Region:';

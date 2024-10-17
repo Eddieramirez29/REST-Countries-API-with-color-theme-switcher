@@ -100,12 +100,13 @@ select
     background-color: $background-colors;
 }
 
-.containerCard
+
+#flag
 {
-    display: flex;
-    flex-direction: column;
-    width: $mobile-width;
-    align-items: center;
+    margin-top: $standard-margin;
+    margin-left: calc($mobile-width/5.538);
+    height: 150px;
+    width: calc($mobile-width/3);
 }
 
 .card
@@ -118,12 +119,12 @@ select
     flex-direction: column;
 }
 
-#flag
+.containerCard
 {
-    margin-top: $standard-margin;
-    margin-left: calc($mobile-width/5.538);
-    height: 150px;
-    width: calc($mobile-width/3);
+    display: flex;
+    flex-direction: column;
+    width: $mobile-width;
+    align-items: center;
 }
 
 #text
@@ -169,12 +170,27 @@ header
         right: 150px;
     }
 
+
     .containerCard
     {
+        width: $desktop-width;
         display: flex;
+        align-items: center;
         flex-direction: row;
-        width: $mobile-width;
     }
+
+    .card
+    {
+        width: 300px;
+    }
+
+    #flag
+    {
+        margin-left: calc($mobile-width/30);
+    }
+
+
+
 
 
 }
