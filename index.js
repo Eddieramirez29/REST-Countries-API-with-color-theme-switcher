@@ -78,57 +78,86 @@ button.addEventListener("click", function()
     
 });
 
+let Americas;
+let americaCountries = [];
+
+function extractFlags()
+{
+    return fetch("https://restcountries.com/v3.1/all")
+    .then( response => {
+        if (!response.ok)
+        {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data =>
+        {
+            // console.log(data[15]);
+            //This creates a new array called Americas
+            Americas = data.filter(country => country.region === 'Americas');
+            Americas.forEach(country => {
+            americaCountries.push(country.name.common)
+        });
+
+
+        }
+    )
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+}
+
 
 
 
 //Create new card that contains country information and flag
-input.addEventListener("keydown", function(event)
-{
-    if(event.key === "Enter")
-    {
+input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
         
-        const img = document.createElement('img');
-        const div2 = document.createElement('div');
-        const p1 = document.createElement('p');
-        const p2 = document.createElement('p');
-        const p3 = document.createElement('p');
-        const p4 = document.createElement('p');
-
-        // Asigna un id/class al nuevo elemento
-        const div = document.createElement("div");
-        div.classList.add('card');
+        extractFlags().then(() => { // Espera a que extractFlags se complete
+            americaCountries.forEach(country => {
+                console.log(country);
+            
         
-        img.id = "flag";
-        div2.id = 'text';
-        p1.id = "nameCountry";
-        p2.id = "population";
-        p3.id = "region";
-        p4.id = "capital";
+            const img = document.createElement('img');
+            const div2 = document.createElement('div');
+            const p1 = document.createElement('p');
+            const p2 = document.createElement('p');
+            const p3 = document.createElement('p');
+            const p4 = document.createElement('p');
 
-        //Styles
-        div.style.marginTop = "25px";  
-        div.style.marginBottom = "25px";
-        div.style.borderRadius = "10px";
+            // Asigna un id/class al nuevo elemento
+            const div = document.createElement("div");
+            div.classList.add('card');
+            
+            img.id = "flag";
+            div2.id = 'text';
+            p1.id = "nameCountry";
+            p2.id = "population";
+            p3.id = "region";
+            p4.id = "capital";
 
-        //Add content
-        img.src = "./media/Flag_of_Germany.svg.png";
-        p2.textContent = 'Population:';
-        p3.textContent = 'Region:';
-        p4.textContent = 'Capital:';
+            //Styles
+            div.style.marginTop = "25px";  
+            div.style.marginBottom = "25px";
+            div.style.borderRadius = "10px";
 
-        //Append children
-        containerCard.appendChild(div);
-        div.appendChild(img);
-        div.appendChild(div2);
-        div2.appendChild(p1);
-        div2.appendChild(p2);
-        div2.appendChild(p3);
-        div2.appendChild(p4);
+            //Add content
+            img.src = "./media/Flag_of_Germany.svg.png";
+            p2.textContent = 'Population:';
+            p3.textContent = 'Region:';
+            p4.textContent = 'Capital:' + country;
+
+            //Append children
+            containerCard.appendChild(div);
+            div.appendChild(img);
+            div.appendChild(div2);
+            div2.appendChild(p1);
+            div2.appendChild(p2);
+            div2.appendChild(p3);
+            div2.appendChild(p4);
+        });
+        }); // Cerrado correctamente el then
     }
-
-    counterFlags++;
-    if (counterFlags === 4) {
-        
-        
-    }
-})
+}); // Cerrado correctamente el addEventListener
