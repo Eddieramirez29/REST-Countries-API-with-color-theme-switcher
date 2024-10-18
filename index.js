@@ -20,6 +20,8 @@ let backgroundColorVariableDarker = "hsl(207, 26%, 17%)";
 let colorLight = "white";
 let colorDark = "black";
 
+let counterFlags = 0;
+
 button.addEventListener("click", function()
 {
     switch(selectColor)
@@ -122,5 +124,11 @@ input.addEventListener("keydown", function(event)
         div2.appendChild(p2);
         div2.appendChild(p3);
         div2.appendChild(p4);
+    }
+
+    counterFlags++;
+    if (counterFlags === 4) {
+        
+        
     }
 })

@@ -133,6 +133,7 @@ header {
     display: flex;
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   .card {
     width: 300px;
