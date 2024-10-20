@@ -82,6 +82,7 @@ let Americas;
 let americaCountries = [];
 let regionsArray = [];
 let region;
+let populationArray = [];
 let population;
 let counter = 0;
 
@@ -99,27 +100,26 @@ function extractFlags()
         {
             // console.log(data[15]);
             console.log(data[0]);
-            // region = data[0].region;
-            population = data[0].population;
-            console.log(population);
+            // // region = data[0].region;
+            // population = data[0].population;
+            // console.log(population);
             //This creates a new array called Americas
             Americas = data.filter(country => country.region === 'Americas');
-
-            
 
             Americas.forEach(country => {
             americaCountries.push(country.name.common);
             regionsArray[counter] = (country.region);
+            populationArray[counter] = (country.population);
+            console.log(`Added: ${americaCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
             counter++;
         });
         counter = 0;
-
 
         }
     )
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
-      });
+    });
 }
 
 
@@ -130,9 +130,11 @@ input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         
         extractFlags().then(() => { // Waits til extractFlags is complete
-            region = regionsArray[counter];
+            
             americaCountries.forEach(country =>
             {
+            region = regionsArray[counter];
+            population = populationArray[counter];
             const img = document.createElement('img');
             const div2 = document.createElement('div');
             const p1 = document.createElement('p');
@@ -163,9 +165,10 @@ input.addEventListener("keydown", function (event) {
             // {
             p3.textContent = 'Region: ' + region;
             counter++;
+            console.log(counter);
             // });
             
-                p4.textContent = 'Capital: ' + country;
+            p4.textContent = 'Capital: ' + country;
             
 
             //Append children
