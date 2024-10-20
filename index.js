@@ -1,14 +1,32 @@
 const button = document.getElementById("mode");
 const containerCard = document.querySelector(".containerCard");
-
+const continentSelected = document.getElementById('continents');
+let continent = continentSelected.value;
 const div = document.createElement("div");
 div.classList.add('card');
-
-
 const input = document.getElementById('input');
-const countries = document.getElementById('countries');
 const containerSearch = document.querySelector('.containerSearch');
 const containerMenu = document.querySelector('.containerMenu');
+
+let Americas;
+let americaCountries = [];
+let regionsArray = [];
+let region;
+let populationArray = [];
+let population;
+let flagsArray = [];
+let flag;
+let counter = 0;
+
+
+continentSelected.addEventListener("change", function()
+{
+    continent = continentSelected.value;
+    console.log(continent);
+    while (containerCard.firstChild) {
+        containerCard.removeChild(containerCard.firstChild);
+    }
+})
 
 //Get body
 const body = document.body;
@@ -35,7 +53,7 @@ button.addEventListener("click", function()
             header.style.backgroundColor = backgroundColorVariableDark;
             containerMenu.style.backgroundColor = backgroundColorVariableDark;
             div.style.backgroundColor = backgroundColorVariableDark;
-            countries.style.backgroundColor = backgroundColorVariableDark;
+            continentSelected.style.backgroundColor = backgroundColorVariableDark;
             //Change letter colors
             body.style.color = colorLight;
             button.style.color = colorLight;
@@ -44,7 +62,7 @@ button.addEventListener("click", function()
             header.style.color = colorLight;
             containerMenu.style.color = colorLight;
             div.style.color = colorLight;
-            countries.style.color = colorLight;
+            continentSelected.style.color = colorLight;
 
 
             backgroundColorVariableDarker = "white";
@@ -59,7 +77,7 @@ button.addEventListener("click", function()
             header.style.backgroundColor = backgroundColorVariableDark;
             containerMenu.style.backgroundColor = backgroundColorVariableDark;
             div.style.backgroundColor = backgroundColorVariableDark;
-            countries.style.backgroundColor = backgroundColorVariableDark;
+            continentSelected.style.backgroundColor = backgroundColorVariableDark;
 
             body.style.color = colorDark;
             button.style.color = colorDark;
@@ -68,7 +86,7 @@ button.addEventListener("click", function()
             header.style.color = colorDark;
             containerMenu.style.color = colorDark;
             div.style.color = colorDark;
-            countries.style.color = colorDark;
+            continentSelected.style.color = colorDark;
 
             backgroundColorVariableDarker = "hsl(207, 26%, 17%";
             backgroundColorVariableDark = "hsl(209, 23%, 22%)";
@@ -78,48 +96,34 @@ button.addEventListener("click", function()
     
 });
 
-let Americas;
-let americaCountries = [];
-let regionsArray = [];
-let region;
-let populationArray = [];
-let population;
-let counter = 0;
-
-function extractFlags()
+async function extractFlags()
 {
-    return fetch("https://restcountries.com/v3.1/all")
-    .then( response => {
-        if (!response.ok)
-        {
+    try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json();
-    })
-    .then(data =>
-        {
-            // console.log(data[15]);
-            console.log(data[0]);
-            // // region = data[0].region;
-            // population = data[0].population;
-            // console.log(population);
-            //This creates a new array called Americas
-            Americas = data.filter(country => country.region === 'Americas');
+        const data = await response.json();
+        // console.log(data[15]);
+        console.log(data[0]);
+        // // region = data[0].region;
+        // population = data[0].population;
+        // console.log(population);
+        //This creates a new array called Americas
+        Americas = data.filter(country => country.region === continent);
 
-            Americas.forEach(country => {
+        Americas.forEach(country => {
             americaCountries.push(country.name.common);
             regionsArray[counter] = (country.region);
             populationArray[counter] = (country.population);
-            console.log(`Added: ${americaCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
+            flagsArray[counter] = (country.flags.png);
+            // console.log(`Added: ${americaCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
             counter++;
         });
         counter = 0;
-
-        }
-    )
-    .catch(error => {
+    } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-    });
+    }
 }
 
 
@@ -130,11 +134,12 @@ input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         
         extractFlags().then(() => { // Waits til extractFlags is complete
-            
+            counter = 0;
             americaCountries.forEach(country =>
             {
             region = regionsArray[counter];
             population = populationArray[counter];
+            flagsArray[counter]
             const img = document.createElement('img');
             const div2 = document.createElement('div');
             const p1 = document.createElement('p');
@@ -159,15 +164,10 @@ input.addEventListener("keydown", function (event) {
             div.style.borderRadius = "10px";
 
             //Add content
-            img.src = "./media/Flag_of_Germany.svg.png";
+            img.src = flagsArray[counter];
             p2.textContent = 'Population: ' + population;
-            // regions.forEach(region =>
-            // {
             p3.textContent = 'Region: ' + region;
             counter++;
-            console.log(counter);
-            // });
-            
             p4.textContent = 'Capital: ' + country;
             
 
