@@ -269,6 +269,5 @@ input.addEventListener("keydown", function (event) {
         {
             createASingleFlag();
         })// Waits til extractFlags is complete
-        input.placeholder[0] = "Search for a country..."
     }
 }); // Cerrado correctamente el addEventListener
