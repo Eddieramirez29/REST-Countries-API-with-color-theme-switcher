@@ -1,15 +1,18 @@
 const button = document.getElementById("mode");
-const containerCard = document.querySelector(".containerCard");
-const continentSelected = document.getElementById('continents');
-let continent = continentSelected.value;
-const div = document.createElement("div");
-div.classList.add('card');
 const input = document.getElementById('input');
 const containerSearch = document.querySelector('.containerSearch');
 const containerMenu = document.querySelector('.containerMenu');
+const continentSelected = document.getElementById('continents');
+let continent = continentSelected.value;
+const containerCard = document.querySelector(".containerCard");
+const div = document.createElement("div");
+div.classList.add('card');
 
-let Americas;
-let americaCountries = [];
+
+
+
+let countries;
+let allCountries = [];
 let regionsArray = [];
 let region;
 let populationArray = [];
@@ -19,14 +22,7 @@ let flag;
 let counter = 0;
 
 
-continentSelected.addEventListener("change", function()
-{
-    continent = continentSelected.value;
-    console.log(continent);
-    while (containerCard.firstChild) {
-        containerCard.removeChild(containerCard.firstChild);
-    }
-})
+
 
 //Get body
 const body = document.body;
@@ -97,7 +93,7 @@ button.addEventListener("click", function()
 });
 
 async function extractFlags()
-{
+{       counter = 0;
     try {
         const response = await fetch("https://restcountries.com/v3.1/all");
         if (!response.ok) {
@@ -105,81 +101,95 @@ async function extractFlags()
         }
         const data = await response.json();
         // console.log(data[15]);
-        console.log(data[0]);
+        // console.log(data[0]);
         // // region = data[0].region;
         // population = data[0].population;
         // console.log(population);
-        //This creates a new array called Americas
-        Americas = data.filter(country => country.region === continent);
+        //This creates a new array called countries
+        countries = data.filter(country => country.region === continent);
 
-        Americas.forEach(country => {
-            americaCountries.push(country.name.common);
+        countries.forEach(country => {
+            allCountries.push(country.name.common);
             regionsArray[counter] = (country.region);
             populationArray[counter] = (country.population);
-            flagsArray[counter] = (country.flags.png);
-            // console.log(`Added: ${americaCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
+            flagsArray[counter] = (country.flags.svg);
+            console.log(`Added: ${allCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
             counter++;
-        });
-        counter = 0;
+        });counter = 0;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
 }
+
+continentSelected.addEventListener("change", function()
+{
+    containerCard.replaceChildren();
+
+    regionsArray = [];
+    populationArray = [];
+    flagsArray = [];
+    allCountries = [];
+    continent = continentSelected.value;
+    console.log(continent);
+
+    extractFlags().then(() => { // Waits til extractFlags is complete
+        allCountries.forEach(country =>
+        {
+        region = regionsArray[counter];
+        population = populationArray[counter];
+        flagsArray[counter];
+        const img = document.createElement('img');
+        const div2 = document.createElement('div');
+        const p1 = document.createElement('p');
+        const p2 = document.createElement('p');
+        const p3 = document.createElement('p');
+        const p4 = document.createElement('p');
+
+        // Asigna un id/class al nuevo elemento
+        const div = document.createElement("div");
+        div.classList.add('card');
+        
+        img.id = "flag";
+        div2.id = 'text';
+        p1.id = "nameCountry";
+        p2.id = "population";
+        p3.id = "region";
+        p4.id = "capital";
+
+        //Styles
+        div.style.marginTop = "25px";  
+        div.style.marginBottom = "25px";
+        div.style.borderRadius = "10px";
+
+        //Add content
+        img.src = flagsArray[counter];
+        p2.textContent = 'Population: ' + population;
+        p3.textContent = 'Region: ' + region;
+        counter++;
+        p4.textContent = 'Capital: ' + country;
+        
+
+        //Append children
+        containerCard.appendChild(div);
+        div.appendChild(img);
+        div.appendChild(div2);
+        div2.appendChild(p1);
+        div2.appendChild(p2);
+        div2.appendChild(p3);
+        div2.appendChild(p4);
+    }); 
+});
+
+})
 
 
 
 
 //Create new card that contains country information and flag
 input.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
+    if (event.key === "Enter")
+    {
         
-        extractFlags().then(() => { // Waits til extractFlags is complete
-            counter = 0;
-            americaCountries.forEach(country =>
-            {
-            region = regionsArray[counter];
-            population = populationArray[counter];
-            flagsArray[counter]
-            const img = document.createElement('img');
-            const div2 = document.createElement('div');
-            const p1 = document.createElement('p');
-            const p2 = document.createElement('p');
-            const p3 = document.createElement('p');
-            const p4 = document.createElement('p');
-
-            // Asigna un id/class al nuevo elemento
-            const div = document.createElement("div");
-            div.classList.add('card');
-            
-            img.id = "flag";
-            div2.id = 'text';
-            p1.id = "nameCountry";
-            p2.id = "population";
-            p3.id = "region";
-            p4.id = "capital";
-
-            //Styles
-            div.style.marginTop = "25px";  
-            div.style.marginBottom = "25px";
-            div.style.borderRadius = "10px";
-
-            //Add content
-            img.src = flagsArray[counter];
-            p2.textContent = 'Population: ' + population;
-            p3.textContent = 'Region: ' + region;
-            counter++;
-            p4.textContent = 'Capital: ' + country;
-            
-
-            //Append children
-            containerCard.appendChild(div);
-            div.appendChild(img);
-            div.appendChild(div2);
-            div2.appendChild(p1);
-            div2.appendChild(p2);
-            div2.appendChild(p3);
-            div2.appendChild(p4);
-        }); // Cerrado correctamente el then
-    });
+        
     }
 }); // Cerrado correctamente el addEventListener
