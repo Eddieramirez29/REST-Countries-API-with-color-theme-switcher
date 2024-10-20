@@ -21,6 +21,12 @@ let flagsArray = [];
 let flag;
 let counter = 0;
 
+let myCountry;
+let myCapital;
+let myPopulation;
+let myFlag;
+let myRegion;
+
 
 
 
@@ -101,7 +107,7 @@ async function extractFlags()
         }
         const data = await response.json();
         // console.log(data[15]);
-        // console.log(data[0]);
+        //console.log(data[0]);
         // // region = data[0].region;
         // population = data[0].population;
         // console.log(population);
@@ -113,7 +119,7 @@ async function extractFlags()
             regionsArray[counter] = (country.region);
             populationArray[counter] = (country.population);
             flagsArray[counter] = (country.flags.svg);
-            console.log(`Added: ${allCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
+            //console.log(`Added: ${allCountries[counter]}, ${regionsArray[counter]}, ${populationArray[counter]}`);
             counter++;
         });counter = 0;
     } catch (error) {
@@ -130,7 +136,6 @@ continentSelected.addEventListener("change", function()
     flagsArray = [];
     allCountries = [];
     continent = continentSelected.value;
-    console.log(continent);
 
     extractFlags().then(() => { // Waits til extractFlags is complete
         allCountries.forEach(country =>
@@ -185,11 +190,85 @@ continentSelected.addEventListener("change", function()
 
 
 
+async function extractCountry()
+{
+        try {
+            const response = await fetch(`https://restcountries.com/v3.1/name/${input.value}`);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+
+            data.forEach(country =>
+            {
+                if (country.name.common === input.value)
+                {
+                    myCountry = country.name.common;
+                    myCapital = country.capital[0];
+                    myPopulation = country.population;
+                    myFlag = country.flags.svg;
+                    myRegion = country.region;
+                }
+
+            });
+
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+function createASingleFlag()
+{
+        const img = document.createElement('img');
+        const div2 = document.createElement('div');
+        const p1 = document.createElement('p');
+        const p2 = document.createElement('p');
+        const p3 = document.createElement('p');
+        const p4 = document.createElement('p');
+
+        // Asigna un id/class al nuevo elemento
+        const div = document.createElement("div");
+        div.classList.add('card');
+        
+        img.id = "flag";
+        div2.id = 'text';
+        p1.id = "nameCountry";
+        p2.id = "population";
+        p3.id = "region";
+        p4.id = "capital";
+
+        //Styles
+        div.style.marginTop = "25px";  
+        div.style.marginBottom = "25px";
+        div.style.borderRadius = "10px";
+
+        //Add content
+        img.src = myFlag;
+        p2.textContent = 'Population: ' + myPopulation;
+        p3.textContent = 'Region: ' + myRegion;
+        p4.textContent = 'Capital: ' + myCapital;
+        
+
+        //Append children
+        containerCard.appendChild(div);
+        div.appendChild(img);
+        div.appendChild(div2);
+        div2.appendChild(p1);
+        div2.appendChild(p2);
+        div2.appendChild(p3);
+        div2.appendChild(p4);
+}
+
 //Create new card that contains country information and flag
 input.addEventListener("keydown", function (event) {
     if (event.key === "Enter")
     {
-        
-        
+        containerCard.replaceChildren();
+        extractCountry().then(() =>
+        {
+            createASingleFlag();
+        })// Waits til extractFlags is complete
+        input.placeholder[0] = "Search for a country..."
     }
 }); // Cerrado correctamente el addEventListener
