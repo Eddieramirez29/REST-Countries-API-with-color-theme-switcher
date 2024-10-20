@@ -80,6 +80,10 @@ button.addEventListener("click", function()
 
 let Americas;
 let americaCountries = [];
+let regionsArray = [];
+let region;
+let population;
+let counter = 0;
 
 function extractFlags()
 {
@@ -94,11 +98,21 @@ function extractFlags()
     .then(data =>
         {
             // console.log(data[15]);
+            console.log(data[0]);
+            // region = data[0].region;
+            population = data[0].population;
+            console.log(population);
             //This creates a new array called Americas
             Americas = data.filter(country => country.region === 'Americas');
+
+            
+
             Americas.forEach(country => {
-            americaCountries.push(country.name.common)
+            americaCountries.push(country.name.common);
+            regionsArray[counter] = (country.region);
+            counter++;
         });
+        counter = 0;
 
 
         }
@@ -115,11 +129,10 @@ function extractFlags()
 input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         
-        extractFlags().then(() => { // Espera a que extractFlags se complete
-            americaCountries.forEach(country => {
-                console.log(country);
-            
-        
+        extractFlags().then(() => { // Waits til extractFlags is complete
+            region = regionsArray[counter];
+            americaCountries.forEach(country =>
+            {
             const img = document.createElement('img');
             const div2 = document.createElement('div');
             const p1 = document.createElement('p');
@@ -145,9 +158,15 @@ input.addEventListener("keydown", function (event) {
 
             //Add content
             img.src = "./media/Flag_of_Germany.svg.png";
-            p2.textContent = 'Population:';
-            p3.textContent = 'Region:';
-            p4.textContent = 'Capital:' + country;
+            p2.textContent = 'Population: ' + population;
+            // regions.forEach(region =>
+            // {
+            p3.textContent = 'Region: ' + region;
+            counter++;
+            // });
+            
+                p4.textContent = 'Capital: ' + country;
+            
 
             //Append children
             containerCard.appendChild(div);
@@ -157,7 +176,7 @@ input.addEventListener("keydown", function (event) {
             div2.appendChild(p2);
             div2.appendChild(p3);
             div2.appendChild(p4);
-        });
         }); // Cerrado correctamente el then
+    });
     }
 }); // Cerrado correctamente el addEventListener
